@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.anpede.dto.AssociadoDTO;
 import com.anpede.entities.Associado;
 import com.anpede.services.AssociadoService;
 
@@ -19,8 +20,8 @@ public class AssociadoResource {
 	private AssociadoService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Associado>> findAll(){
-		List<Associado> list = service.findAll();
+	public ResponseEntity<List<AssociadoDTO>> findAll(){
+		List<AssociadoDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 
