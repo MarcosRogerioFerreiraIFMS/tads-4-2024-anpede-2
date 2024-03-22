@@ -1,7 +1,8 @@
 package com.anpede.services;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,8 @@ public class AssociadoService {
 	private AssociadoRepository repository;
 	
 	@Transactional(readOnly = true)
-	public List<AssociadoDTO> findAll(){
-		
+	public List<AssociadoDTO> findAll(){		
+		/*
 		List<Associado> list = repository.findAll();		
 		List<AssociadoDTO> listDTO = new ArrayList<>();
 		
@@ -29,7 +30,30 @@ public class AssociadoService {
 		}
 				
 		return listDTO;
+		*/
+		//Lista utilizando Lambdas
+		/*
+		List<Associado> list = repository.findAll();
+		List<AssociadoDTO> listDTO = list.stream()
+										 .map(a -> new AssociadoDTO(a))
+										 .collect(Collectors.toList());
+		
+		return listDTO;
+		*/
+		
+		//Lista utilizando Lambdas com retorno direto
+		List<Associado> list = repository.findAll();
+		return list.stream().map(a -> new AssociadoDTO(a)).collect(Collectors.toList());		
 	}
+
+	@Transactional(readOnly = true)
+	public AssociadoDTO findById(Long id) {
+		Optional<Associado> obj = repository.findById(id);
+		Associado a = obj.get();
+		return new AssociadoDTO(a);
+	}
+	
+	
 	
 	
 	
