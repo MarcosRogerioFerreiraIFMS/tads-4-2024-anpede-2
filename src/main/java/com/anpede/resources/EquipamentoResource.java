@@ -9,26 +9,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.anpede.dto.AssociadoDTO;
-import com.anpede.services.AssociadoService;
+import com.anpede.dto.EquipamentoDTO;
+import com.anpede.services.EquipamentoService;
 
 @RestController
-@RequestMapping(value = "/associados")
-public class AssociadoResource {
+@RequestMapping(value = "/equipamentos")
+public class EquipamentoResource {
 	
 	@Autowired
-	private AssociadoService service;
+	private EquipamentoService service;
 	
 	@GetMapping
-	public ResponseEntity<List<AssociadoDTO>> findAll(){
-		List<AssociadoDTO> list = service.findAll();
+	public ResponseEntity<List<EquipamentoDTO>> findAll(){
+		List<EquipamentoDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
-	//localhost:8080/associados/1
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<AssociadoDTO> findById(@PathVariable Long id){
-		AssociadoDTO dto = service.findById(id);		
+	public ResponseEntity<EquipamentoDTO> findById(@PathVariable Long id){
+		EquipamentoDTO dto = service.findById(id);		
 		return ResponseEntity.ok().body(dto);
 	}
 
