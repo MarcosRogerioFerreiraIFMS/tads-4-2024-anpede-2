@@ -26,9 +26,9 @@ public class EquipamentoResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<EquipamentoDTO> findById(@PathVariable Long id){
+	public ResponseEntity<EquipamentoDTO> findById(@PathVariable Long id){		
 		EquipamentoDTO dto = service.findById(id);		
-		return ResponseEntity.ok().body(dto);
+		return ResponseEntity.ok().body(dto);		
 	}
 
 }
