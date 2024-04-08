@@ -52,6 +52,20 @@ public class AssociadoService {
 		Associado a = obj.get();
 		return new AssociadoDTO(a);
 	}
+
+	public AssociadoDTO insert(AssociadoDTO dto) {
+		Associado entity = new Associado();
+		entity.setNome(dto.getNome());
+		entity.setCPF(dto.getCPF());
+		entity.setDataNascimento(dto.getDataNascimento());
+		entity.setTelefone(dto.getTelefone());
+		entity.setEmail(dto.getEmail());
+		entity.setEndereco(dto.getEndereco());
+			
+		entity = repository.save(entity);
+		return new AssociadoDTO(entity);
+	}
+
 	
 	
 	
