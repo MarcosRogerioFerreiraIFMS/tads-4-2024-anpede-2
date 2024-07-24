@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.anpede.dto.AssociadoDTO;
 import com.anpede.entities.Associado;
 import com.anpede.repositories.AssociadoRepository;
+import com.anpede.services.exceptions.EntityNotFoundException;
 
 
 @Service
@@ -64,6 +65,32 @@ public class AssociadoService {
 			
 		entity = repository.save(entity);
 		return new AssociadoDTO(entity);
+	}
+
+	@Transactional
+	public AssociadoDTO update(Long id, AssociadoDTO dto) {
+		try {
+			
+			Associado entity = repository.getReferenceById(id);
+			
+			entity.setNome(dto.getNome());
+			entity.setCPF(dto.getCPF());
+			entity.setDataNascimento(dto.getDataNascimento());
+			entity.setTelefone(dto.getTelefone());
+			entity.setEmail(dto.getEmail());
+			entity.setEndereco(dto.getEndereco());
+				
+			entity = repository.save(entity);
+			return new AssociadoDTO(entity);
+			
+		} catch(jakarta.persistence.EntityNotFoundException e) {
+			throw new EntityNotFoundException("O recurso com o ID "+id
+					+" não foi localizado");
+		}
+	}
+	
+	public void delete(Long id) {
+		repository.deleteById(id);		
 	}
 
 	
