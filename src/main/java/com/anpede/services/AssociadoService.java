@@ -89,6 +89,7 @@ public class AssociadoService {
 		}
 	}
 	
+	//Implementar o tratamento de exceções para a deleção de registros
 	public void delete(Long id) {
 		repository.deleteById(id);		
 	}
