@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +27,32 @@ public class AssociadoResource {
 	@Autowired
 	private AssociadoService service;
 	
-	@GetMapping
+	/*@GetMapping
 	public ResponseEntity<List<AssociadoDTO>> findAll(){
 		List<AssociadoDTO> list = service.findAll();
+		return ResponseEntity.ok().body(list);
+	}*/
+	
+	//localhost:8080/associados?page=0&size=20&ordeby=asc/desc
+	/*
+	@GetMapping
+	public ResponseEntity<Page<AssociadoDTO>> findAllPaged(
+				@RequestParam(value = "page", defaultValue = "0") Integer page,
+				@RequestParam(value = "linesPerPage", defaultValue = "20") Integer linesPerPage,
+				@RequestParam(value = "direction", defaultValue = "ASC") String direction,
+				@RequestParam(value = "orderBy", defaultValue = "nome") String orderBy
+			){
+		
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage,
+				Direction.valueOf(direction), orderBy);
+		
+		Page<AssociadoDTO> list = service.findAllPaged(pageRequest);
+		return ResponseEntity.ok().body(list);
+	}*/
+	
+	@GetMapping
+	public ResponseEntity<Page<AssociadoDTO>> findAllPaged(Pageable pageable){
+		Page<AssociadoDTO> list = service.findAllPaged(pageable);
 		return ResponseEntity.ok().body(list);
 	}
 	
