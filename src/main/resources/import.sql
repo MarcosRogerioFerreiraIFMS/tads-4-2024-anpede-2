@@ -8,3 +8,6 @@ INSERT INTO TB_EQUIPAMENTO (nome, descricao, marca, categoria, foto, valor, quan
 INSERT INTO TB_EQUIPAMENTO (nome, descricao, marca, categoria, foto, valor, quantidade) VALUES ('Cadeira de Banho', 'A Cadeira de Banho Higiênica D40 da Dellamed é multifuncional: uso sobre o vaso sanitário, para banho e para locomoção interna na casa. É considerada a cadeira de banho de melhor custo benefício da categoria. A cadeira possui 4 rodas que facilitam a movimentação do usuário mesmo em locais com espaços reduzidos: giros de 360º. É dobrável e desmontável, o que facilita guardá-la após o uso. A D40 vem com suporte para comadre, apoio de braços ergonômico, encosto em material sintético flexível e apoio de pés removível.', 'Dellamed', 'CADEIRA_DE_BANHO', 'https://m.media-amazon.com/images/I/51RCd82VntL._AC_SL1000_.jpg', 389.00, 12);
 
 INSERT INTO TB_EQUIPAMENTO_ITEM (numero_serie, situacao, equipamento_id) VALUES ('ABC123', 'DISPONIVEL', 1);
+INSERT INTO TB_EQUIPAMENTO_ITEM (numero_serie, situacao, equipamento_id) VALUES ('QWE789', 'INDISPONIVEL', 1);
+INSERT INTO TB_EQUIPAMENTO_ITEM (numero_serie, situacao, equipamento_id) VALUES ('OUI123', 'DISPONIVEL', 2);
+INSERT INTO TB_EQUIPAMENTO_ITEM (numero_serie, situacao, equipamento_id) VALUES ('REY789', 'INDISPONIVEL', 2);

@@ -28,7 +28,7 @@ public class EquipamentoService {
 	@Transactional(readOnly = true)
 	public List<EquipamentoDTO> findAll(){				
 		List<Equipamento> list = repository.findAll();
-		return list.stream().map(e -> new EquipamentoDTO(e)).collect(Collectors.toList());		
+		return list.stream().map(e -> new EquipamentoDTO(e, e.getEquipamentosItem())).collect(Collectors.toList());		
 	}
 
 	@Transactional(readOnly = true)
